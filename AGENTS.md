@@ -13,7 +13,7 @@ it requires Axon on the classpath only when the adapter classes are actually use
 ### Package structure
 
 ```
-com.spadar.friendsofddd.eventdriven
+com.spadar.eventdriven
 ├── CommandBus.kt          # CommandBus interface
 ├── EventBus.kt            # EventBus interface
 ├── EventAware.kt          # EventAware interface (record / pop events)

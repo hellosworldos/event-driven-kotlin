@@ -1,6 +1,6 @@
-package com.spadar.friendsofddd.eventdriven.adapter.axon
+package com.spadar.eventdriven.adapter.axon
 
-import com.spadar.friendsofddd.eventdriven.CommandBus
+import com.spadar.eventdriven.CommandBus
 import org.axonframework.commandhandling.GenericCommandMessage
 import org.axonframework.commandhandling.CommandBus as AxonCommandBus
 

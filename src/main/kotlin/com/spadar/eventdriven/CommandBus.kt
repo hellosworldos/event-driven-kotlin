@@ -1,4 +1,4 @@
-package com.spadar.friendsofddd.eventdriven
+package com.spadar.eventdriven
 
 interface CommandBus {
     fun dispatch(vararg commands: Any)

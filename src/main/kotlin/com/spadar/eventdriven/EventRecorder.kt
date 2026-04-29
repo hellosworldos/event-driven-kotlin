@@ -1,4 +1,4 @@
-package com.spadar.friendsofddd.eventdriven
+package com.spadar.eventdriven
 
 class EventRecorder : EventAware {
     private val events: MutableList<Any> = mutableListOf()

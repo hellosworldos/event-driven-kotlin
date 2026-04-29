@@ -1,6 +1,6 @@
-package com.spadar.friendsofddd.eventdriven.adapter.axon
+package com.spadar.eventdriven.adapter.axon
 
-import com.spadar.friendsofddd.eventdriven.EventBus
+import com.spadar.eventdriven.EventBus
 import org.axonframework.eventhandling.GenericEventMessage
 import org.axonframework.eventhandling.EventBus as AxonEventBus
 

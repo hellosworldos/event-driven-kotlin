@@ -23,7 +23,7 @@ Add the library to your Gradle build:
 
 ```kotlin
 dependencies {
-    implementation("com.spadar.friendsofddd:event-driven-kotlin:1.0.0")
+    implementation("com.spadar:event-driven-kotlin:1.0.0")
 
     // Only needed if you use AxonCommandBusAdapter / AxonEventBusAdapter
     implementation("org.axonframework:axon-messaging:4.10.3")
@@ -118,7 +118,7 @@ to Axon Framework's command and event buses.
 ### AxonCommandBusAdapter
 
 ```kotlin
-import com.spadar.friendsofddd.eventdriven.adapter.axon.AxonCommandBusAdapter
+import com.spadar.eventdriven.adapter.axon.AxonCommandBusAdapter
 import org.axonframework.commandhandling.CommandBus
 
 val commandBus: CommandBus = SimpleCommandBus.builder().build()
@@ -130,7 +130,7 @@ bus.dispatch(CreateTicketCommand("Fix login issue", clientId = 123))
 ### AxonEventBusAdapter
 
 ```kotlin
-import com.spadar.friendsofddd.eventdriven.adapter.axon.AxonEventBusAdapter
+import com.spadar.eventdriven.adapter.axon.AxonEventBusAdapter
 import org.axonframework.eventhandling.EventBus
 
 val eventBus: EventBus = SimpleEventBus.builder().build()

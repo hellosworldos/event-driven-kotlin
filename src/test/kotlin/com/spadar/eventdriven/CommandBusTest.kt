@@ -1,4 +1,4 @@
-package com.spadar.friendsofddd.eventdriven
+package com.spadar.eventdriven
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

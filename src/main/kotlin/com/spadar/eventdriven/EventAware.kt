@@ -1,4 +1,4 @@
-package com.spadar.friendsofddd.eventdriven
+package com.spadar.eventdriven
 
 interface EventAware {
     fun recordEvents(vararg events: Any)
