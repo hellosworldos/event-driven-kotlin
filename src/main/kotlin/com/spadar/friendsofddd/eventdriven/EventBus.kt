@@ -1,4 +1,4 @@
-package io.friendsofddd.eventdriven
+package com.spadar.friendsofddd.eventdriven
 
 interface EventBus {
     fun dispatch(vararg events: Any)

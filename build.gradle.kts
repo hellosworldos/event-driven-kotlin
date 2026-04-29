@@ -6,7 +6,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "12.2.0"
 }
 
-group = "io.friendsofddd"
+group = "com.spadar.friendsofddd"
 version = "1.0.0"
 
 repositories {
