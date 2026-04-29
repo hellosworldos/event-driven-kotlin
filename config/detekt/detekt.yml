@@ -1,0 +1,10 @@
+build:
+  maxIssues: 0
+
+complexity:
+  ComplexCondition:
+    threshold: 4
+
+style:
+  MaxLineLength:
+    maxLineLength: 120
