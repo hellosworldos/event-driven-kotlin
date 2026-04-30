@@ -74,16 +74,18 @@ Same pattern as `CommandBus`, but for domain events.
 eventBus.dispatch(TicketCreatedEvent(ticketId = 1, title = "Fix login issue"))
 ```
 
+
 ### EventAware + EventRecorder
 
-Domain entities can record events without inheriting from a base class by using Kotlin's `by`
-delegation with `EventRecorder`:
+Domain entities can record events without inheriting from a base class by using composition with `EventRecorder`:
 
 ```kotlin
 class Ticket(
     val id: Int,
     private val recorder: EventRecorder = EventRecorder(),
-) : EventAware by recorder {
+) : EventAware {
+    fun recordEvents(vararg events: Any) = recorder.recordEvents(*events)
+    override fun popRecordedEvents(): List<Any> = recorder.popRecordedEvents()
 
     companion object {
         fun create(id: Int, title: String, clientId: Int): Ticket {
@@ -101,8 +103,9 @@ val events = ticket.popRecordedEvents() // clears internal list, returns snapsho
 eventBus.dispatch(*events.toTypedArray())
 ```
 
-`popRecordedEvents()` returns a snapshot of recorded events **and clears** the internal list, so
-each event is dispatched exactly once.
+Here, `EventAware` only exposes `popRecordedEvents()`. The `recordEvents()` method is not part of the interface and can be kept private to the entity. `EventRecorder` holds the event state and provides the actual recording logic.
+
+`popRecordedEvents()` returns a snapshot of recorded events **and clears** the internal list, so each event is dispatched exactly once.
 
 ---
 

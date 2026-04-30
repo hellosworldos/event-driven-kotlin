@@ -1,4 +1,4 @@
-package com.spadar.eventdriven
+package com.spadar.eventdriven.domain
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -37,7 +37,7 @@ class EventRecorderTest {
             private val eventRecorder: EventRecorder = EventRecorder(),
         ) : EventAware by eventRecorder {
             fun doSomething() {
-                recordEvents("domain_event_happened")
+                eventRecorder.recordEvents("domain_event_happened")
             }
         }
 

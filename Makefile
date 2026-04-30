@@ -1,7 +1,6 @@
-DOCKER_IMAGE = event-driven-kotlin
-DOCKER_RUN = docker run --rm -v $(PWD):/app -w /app gradle:8.13-jdk21-alpine
+DOCKER_RUN = docker compose run --rm gradle
 
-.PHONY: build test lint analyze check clean docker-build
+.PHONY: build test lint analyze check clean docker-build docker-test docker-lint docker-analyze docker-check
 
 build:
 	./gradlew build --no-daemon
@@ -24,7 +23,7 @@ clean:
 	./gradlew clean --no-daemon
 
 docker-build:
-	docker build -t $(DOCKER_IMAGE) .
+	docker compose build
 
 docker-test:
 	$(DOCKER_RUN) gradle test --no-daemon

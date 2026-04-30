@@ -1,9 +1,9 @@
-package com.spadar.eventdriven
+package com.spadar.eventdriven.domain
 
 class EventRecorder : EventAware {
     private val events: MutableList<Any> = mutableListOf()
 
-    override fun recordEvents(vararg events: Any) {
+    fun recordEvents(vararg events: Any) {
         this.events.addAll(events)
     }
 

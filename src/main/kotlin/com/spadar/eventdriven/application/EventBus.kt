@@ -1,4 +1,4 @@
-package com.spadar.eventdriven
+package com.spadar.eventdriven.application
 
 interface EventBus {
     fun dispatch(vararg events: Any)

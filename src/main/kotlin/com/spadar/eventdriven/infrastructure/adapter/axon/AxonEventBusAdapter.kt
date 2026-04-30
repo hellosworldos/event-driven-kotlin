@@ -1,6 +1,6 @@
-package com.spadar.eventdriven.adapter.axon
+package com.spadar.eventdriven.infrastructure.adapter.axon
 
-import com.spadar.eventdriven.EventBus
+import com.spadar.eventdriven.application.EventBus
 import org.axonframework.eventhandling.GenericEventMessage
 import org.axonframework.eventhandling.EventBus as AxonEventBus
 

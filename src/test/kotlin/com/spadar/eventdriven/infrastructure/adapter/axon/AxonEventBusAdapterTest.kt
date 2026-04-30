@@ -1,4 +1,4 @@
-package com.spadar.eventdriven.adapter.axon
+package com.spadar.eventdriven.infrastructure.adapter.axon
 
 import io.mockk.mockk
 import io.mockk.slot
