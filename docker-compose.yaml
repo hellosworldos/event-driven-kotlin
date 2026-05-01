@@ -1,0 +1,7 @@
+services:
+  gradle:
+    build: .
+    image: event-driven-kotlin
+    volumes:
+      - .:/app
+    working_dir: /app
