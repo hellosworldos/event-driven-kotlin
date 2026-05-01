@@ -144,6 +144,54 @@ bus.dispatch(TicketCreatedEvent(ticketId = 1, title = "Fix login issue"))
 
 ---
 
+## Testing utilities
+
+### InMemoryEventStreamProvider
+
+`InMemoryEventStreamProvider` wraps any `EventBus` and records every dispatched event so you can assert on them in tests. It still forwards all events to the delegate, so the rest of your application continues to work normally.
+
+```kotlin
+import com.spadar.eventdriven.infrastructure.inmemory.InMemoryEventStreamProvider
+
+// Use a no-op or recording delegate in tests
+val delegate = RecordingEventBus()
+val eventStream = InMemoryEventStreamProvider(delegate)
+
+// Pass eventStream wherever an EventBus is expected
+val service = TicketService(commandBus, eventStream)
+
+service.createTicket(id = 1, title = "Fix login")
+
+val events = eventStream.getNewEvents()
+assertEquals(1, events.size)
+assertIs<TicketCreatedEvent>(events[0])
+```
+
+`getNewEvents()` returns a snapshot of all events dispatched since the last call **and clears** the internal list, so each assertion window is independent:
+
+```kotlin
+service.createTicket(id = 1, title = "First")
+eventStream.getNewEvents() // consume first batch
+
+service.createTicket(id = 2, title = "Second")
+val events = eventStream.getNewEvents() // only contains the second ticket's events
+assertEquals(1, events.size)
+```
+
+A minimal `RecordingEventBus` delegate is available in the test source set under `com.spadar.eventdriven.kit` and can be used to additionally verify that events reached the delegate:
+
+```kotlin
+val delegate = RecordingEventBus()
+val eventStream = InMemoryEventStreamProvider(delegate)
+
+eventStream.dispatch(TicketCreatedEvent(id = 1, title = "Fix login"))
+
+assertEquals(1, delegate.dispatched.size) // forwarded to delegate
+assertEquals(1, eventStream.getNewEvents().size) // also captured by the provider
+```
+
+---
+
 ## Local development
 
 A `Makefile` and `Dockerfile` are provided so you can run all checks without installing a local JDK.
